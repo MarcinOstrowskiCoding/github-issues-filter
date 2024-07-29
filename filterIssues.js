@@ -7,8 +7,7 @@ const repos = [
   // Add more repositories as needed
 ]
 
-// GitHub Personal Access Token (optional but recommended for higher rate limits)
-const GITHUB_TOKEN = 'your_github_token_here'
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 async function checkIssues() {
   for (const { owner, repo } of repos) {
