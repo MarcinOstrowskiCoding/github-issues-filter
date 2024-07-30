@@ -1,10 +1,10 @@
+require('dotenv').config()
 const axios = require('axios')
 
-// List of repositories to check
 const repos = [
-  { owner: 'owner1', repo: 'repo1' },
-  { owner: 'owner2', repo: 'repo2' },
-  // Add more repositories as needed
+  { owner: 'vercel', repo: 'next.js' },
+  { owner: 'FortAwesome', repo: 'Font-Awesome' },
+  { owner: 'duckduckgo', repo: 'duckduckgo-privacy-extension' },
 ]
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
@@ -38,6 +38,5 @@ async function checkIssues() {
   }
 }
 
-// Run the check periodically (e.g., every hour)
-setInterval(checkIssues, 3600000) // 3600000 ms = 1 hour
+// setInterval(checkIssues, 3600000)
 checkIssues()
