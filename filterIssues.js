@@ -10,6 +10,9 @@ const repos = [
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 async function checkIssues() {
+  const monthAgo = new Date()
+  monthAgo.setMonth(monthAgo.getMonth() - 1)
+
   for (const { owner, repo } of repos) {
     try {
       const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/issues`, {
@@ -23,14 +26,15 @@ async function checkIssues() {
         },
       })
 
-      const issues = response.data
+      const issues = response.data.filter((issue) => {
+        const createdAt = new Date(issue.created_at)
+        return createdAt >= monthAgo
+      })
       if (issues.length > 0) {
         console.log(`Found ${issues.length} issues with label "good first issue" in ${owner}/${repo}:`)
         issues.forEach((issue) => {
           console.log(`- ${issue.title}: ${issue.html_url}`)
         })
-      } else {
-        console.log(`No issues found with label "good first issue" in ${owner}/${repo}.`)
       }
     } catch (error) {
       console.error(`Error fetching issues for ${owner}/${repo}:`, error)
@@ -38,5 +42,5 @@ async function checkIssues() {
   }
 }
 
-// setInterval(checkIssues, 3600000)
+setInterval(checkIssues, 3600000)
 checkIssues()
