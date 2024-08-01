@@ -5,6 +5,15 @@ const repos = [
   { owner: 'vercel', repo: 'next.js' },
   { owner: 'FortAwesome', repo: 'Font-Awesome' },
   { owner: 'duckduckgo', repo: 'duckduckgo-privacy-extension' },
+  { owner: 'brave', repo: 'brave-browser' },
+  { owner: 'gorhill', repo: 'uBlock' },
+  { owner: 'adblockplus', repo: 'adblockpluschrome' },
+  { owner: 'AdguardTeam', repo: 'AdguardBrowserExtension' },
+  { owner: 'pi-hole', repo: 'pi-hole' },
+  { owner: 'ghostery', repo: 'ghostery-extension' },
+  { owner: 'EFForg', repo: 'privacybadger' },
+  { owner: 'gorhill', repo: 'uBlock' },
+  { owner: 'hackademix', repo: 'noscript' },
 ]
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
